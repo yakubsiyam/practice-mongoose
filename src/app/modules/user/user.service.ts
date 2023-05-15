@@ -3,8 +3,11 @@ import User from "./user.model";
 
 // 4. DB Query
 export const creaeUserToDB = async (payload: IUser): Promise<IUser> => {
-  const user = await new User(payload);
-  await user.save();
+  // Creating new user
+  const user = await new User(payload); // User -> Class   user -> instance
+  await user.save(); //built in instance methods
+
+  console.log(user.fullName()); // custom instance methods
   return user;
 };
 
@@ -18,4 +21,8 @@ export const getUserByIdFromDB = async (
 export const getUsersFromDB = async (): Promise<IUser[]> => {
   const users = await User.find();
   return users;
+};
+
+export const getAdminUsersFromDB = async (): Promise<IUser[]> => {
+  const user1 = new User(); // Static User
 };
