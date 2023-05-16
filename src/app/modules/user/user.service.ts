@@ -23,6 +23,9 @@ export const getUsersFromDB = async (): Promise<IUser[]> => {
   return users;
 };
 
-export const getAdminUsersFromDB = async (): Promise<IUser[]> => {
-  const user1 = new User(); // Static User
+export const getAdminUsersFromDB = async () => {
+  const admins = await User.getAdminUsers();
+  return admins;
 };
+
+// class -> attach -> method -> directly call using class;
